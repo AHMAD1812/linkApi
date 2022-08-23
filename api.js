@@ -29,5 +29,5 @@ router.route("/user/:zip").get((req, res) => {
     });
 });
 
-var port = process.env.PORT || 8090;
+var port = process.env.PORT || 80;
 app.listen(port);
