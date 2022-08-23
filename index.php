@@ -15,7 +15,7 @@ catch( PDOException $e ) {
    die( "Error connecting to SQL Server: ".$e->getMessage() );    
 }
 
-$sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=".$_GET['zip'];
+$sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=".$_POST['zip'];
 $query = $conn->prepare($sql);
 $query->execute();
 $members = $query->fetchAll(PDO::FETCH_ASSOC);
