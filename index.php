@@ -20,4 +20,4 @@ $query = $conn->prepare($sql);
 $query->execute();
 $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
-echo $members;
+print($members);
