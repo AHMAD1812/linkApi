@@ -13,6 +13,7 @@ app.use('/api', router);
 
 
 router.use((req, res, next) => {
+    console.log('middleware');
     next();
 });
 
