@@ -1,4 +1,9 @@
 <?php 
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 // SQL server configuration 
 $serverName = "link-reporting.database.windows.net"; 
 $dbUsername = "link"; 
@@ -15,7 +20,7 @@ catch( PDOException $e ) {
    die( "Error connecting to SQL Server: ".$e->getMessage() );    
 }
 
-$sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=".$_POST['zip'];
+$sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=".$_GET['zip'];
 $query = $conn->prepare($sql);
 $query->execute();
 $members = $query->fetchAll(PDO::FETCH_ASSOC);
