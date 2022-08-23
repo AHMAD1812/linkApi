@@ -1,10 +1,6 @@
 var config = require('./dbConfig');
 const sql = require('mssql');
 
-config.connectionTimeout = 30000;
-// 'acquireTimeoutMillis' is the number of milliseconds before a timeout occurs when acquiring a
-// connection from the pool.
-config.pool.acquireTimeoutMillis = 30000;
 
 async function getUsers() {
     try {
