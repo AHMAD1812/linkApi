@@ -18,7 +18,7 @@ try {
     die("Error connecting to SQL Server: " . $e->getMessage());
 }
 
-if(isset($_Get['zip'])){
+if(isset($_GET['zip'])){
    $sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=" . $_GET['zip'];
    $query = $conn->prepare($sql);
    $query->execute();
@@ -32,5 +32,4 @@ if(isset($_Get['zip'])){
    $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
    echo json_encode($members);
-
 }
