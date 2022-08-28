@@ -18,10 +18,19 @@ try {
     die("Error connecting to SQL Server: " . $e->getMessage());
 }
 
+if(isset($_Get['zip'])){
+   $sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=" . $_GET['zip'];
+   $query = $conn->prepare($sql);
+   $query->execute();
+   $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM SALESREP_ZIPCODE where ZIPCODE=".$_GET['zip'];
-$query = $conn->prepare($sql);
-$query->execute();
-$members = $query->fetchAll(PDO::FETCH_ASSOC);
+   echo json_encode($members);
+}else if(isset($_GET['zipcode']) && isset($_GET['brand'])){
+   $sql = "SELECT * FROM SALESREP_ZIP_VENDOR";
+   $query = $conn->prepare($sql);
+   $query->execute();
+   $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($members);
+   echo json_encode($members);
+
+}
