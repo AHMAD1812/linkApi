@@ -26,7 +26,7 @@ if(isset($_GET['zip'])){
 
    echo json_encode($members);
 }else if(isset($_GET['zipcode']) && isset($_GET['brand'])){
-   $sql = "SELECT * FROM SALESREP_ZIP_VENDOR";
+   $sql = "SELECT * FROM SALESREP_ZIPCODE";
    $query = $conn->prepare($sql);
    $query->execute();
    $members = $query->fetchAll(PDO::FETCH_ASSOC);
