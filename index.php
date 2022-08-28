@@ -26,10 +26,14 @@ if(isset($_GET['zip'])){
 
    echo json_encode($members);
 }else if(isset($_GET['zipcode']) && isset($_GET['brand'])){
-   $sql = "SELECT * FROM [dbo].[SALESREP_ZIP_VENDOR]";
-   $query = $conn->prepare($sql);
-   $query->execute();
-   $members = $query->fetchAll(PDO::FETCH_ASSOC);
+   try{
+      $sql = "SELECT * FROM SALESREP_ZIP_VENDOR";
+      $query = $conn->prepare($sql);
+      $query->execute();
+      $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
-   echo json_encode($members);
+      echo json_encode($members);
+   }catch(Exception $e){
+      echo $e;
+   }
 }
