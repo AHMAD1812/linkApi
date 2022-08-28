@@ -33,7 +33,7 @@ if(isset($_GET['zip'])){
       $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
       echo json_encode($members);
-   }catch(Exception $e){
-      echo $e;
+   }catch(PDOException $e){
+      die("Error " . $e->getMessage());
    }
 }
