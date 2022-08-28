@@ -25,9 +25,9 @@ if(isset($_GET['zip'])){
    $members = $query->fetchAll(PDO::FETCH_ASSOC);
 
    echo json_encode($members);
-}else if(isset($_POST['zipcode']) && isset($_POST['brand'])){
+}else if(isset($_GET['zipcode'])){
    try{
-      $sql = "SELECT * FROM SALESREP_ZIP_VENDOR where BRAND_NAME = '".$_POST['brand']."' AND ZIPCODE=".$_POST['zipcode'];
+      $sql = "SELECT * FROM SALESREP_ZIP_VENDOR where ZIPCODE=".$_GET['zipcode'];
       $query = $conn->prepare($sql);
       $query->execute();
       $members = $query->fetchAll(PDO::FETCH_ASSOC);
